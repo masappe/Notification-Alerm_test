@@ -14,6 +14,9 @@
 		69ED26382288F7490064F118 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69ED26362288F7490064F118 /* LaunchScreen.storyboard */; };
 		69ED26432288F74A0064F118 /* Notification_Alerm_testTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ED26422288F74A0064F118 /* Notification_Alerm_testTests.swift */; };
 		69ED264E2288F74A0064F118 /* Notification_Alerm_testUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ED264D2288F74A0064F118 /* Notification_Alerm_testUITests.swift */; };
+		69ED265C22891EF20064F118 /* test.wav in Resources */ = {isa = PBXBuildFile; fileRef = 69ED265B22891EF20064F118 /* test.wav */; };
+		69ED265E228940B80064F118 /* SE_attack.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 69ED265D228940B70064F118 /* SE_attack.mp3 */; };
+		69ED2660228953020064F118 /* BGM_battle001.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 69ED265F228953020064F118 /* BGM_battle001.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		69ED26492288F74A0064F118 /* Notification,Alerm_testUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Notification,Alerm_testUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		69ED264D2288F74A0064F118 /* Notification_Alerm_testUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification_Alerm_testUITests.swift; sourceTree = "<group>"; };
 		69ED264F2288F74A0064F118 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		69ED265B22891EF20064F118 /* test.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = test.wav; sourceTree = "<group>"; };
+		69ED265D228940B70064F118 /* SE_attack.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = SE_attack.mp3; sourceTree = "<group>"; };
+		69ED265F228953020064F118 /* BGM_battle001.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BGM_battle001.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +103,9 @@
 		69ED262C2288F7450064F118 /* Notification,Alerm_test */ = {
 			isa = PBXGroup;
 			children = (
+				69ED265F228953020064F118 /* BGM_battle001.mp3 */,
+				69ED265D228940B70064F118 /* SE_attack.mp3 */,
+				69ED265B22891EF20064F118 /* test.wav */,
 				69ED262D2288F7450064F118 /* AppDelegate.swift */,
 				69ED262F2288F7450064F118 /* ViewController.swift */,
 				69ED26312288F7450064F118 /* Main.storyboard */,
@@ -229,9 +238,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69ED265C22891EF20064F118 /* test.wav in Resources */,
 				69ED26382288F7490064F118 /* LaunchScreen.storyboard in Resources */,
 				69ED26352288F7490064F118 /* Assets.xcassets in Resources */,
+				69ED2660228953020064F118 /* BGM_battle001.mp3 in Resources */,
 				69ED26332288F7450064F118 /* Main.storyboard in Resources */,
+				69ED265E228940B80064F118 /* SE_attack.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
