@@ -15,6 +15,8 @@ class ViewController: UIViewController,UNUserNotificationCenterDelegate {
     @IBOutlet weak var triggerLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var getLabel: UILabel!
+    var audioPlayer: AVAudioPlayer!
+    var testDate: [Int] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +34,32 @@ class ViewController: UIViewController,UNUserNotificationCenterDelegate {
         timer.fire()
         
     }
+    
+    @IBAction func nextButton(_ sender: Any) {
+        testDate = getDateInformation()
+        testDate[5] = testDate[5] + 10
+        let chooseTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(checkDate), userInfo: nil, repeats: true)
+    }
+    
+    //現在の日付と設定した日付が一致しているかどうか
+    @objc func checkDate() {
+        let currentDate = getDateInformation()
+        getLabel.text = "testDate:\(testDate)\ncheckDate:\(currentDate)"
+        if testDate == currentDate {
+            let soundFilePath = Bundle.main.path(forResource: "BGM_battle001", ofType: "mp3")
+            let sound = URL(fileURLWithPath: soundFilePath!)
+            do {
+                audioPlayer = try AVAudioPlayer(contentsOf: sound)
+                try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [])
+                try AVAudioSession.sharedInstance().setActive(true, options: [])
+                getLabel.text = "music start"
+            } catch {
+                print("error")
+            }
+            audioPlayer.play()
+
+        }
+    }
 
     @IBAction func pressButton(_ sender: Any) {
         getLabel.text = "Label"
@@ -45,6 +73,7 @@ class ViewController: UIViewController,UNUserNotificationCenterDelegate {
         //現在の日付の取得
         let date = getDateInformation()
         //トリガーの設定
+        //10秒後に発火するようにする
         notificationTime.year = date[0]
         notificationTime.month = date[1]
         notificationTime.day = date[2]
@@ -75,18 +104,6 @@ class ViewController: UIViewController,UNUserNotificationCenterDelegate {
         //フォアグラウンドで欲しい機能を決める
         completionHandler([.alert,.sound,.badge])
         var audioPlayer: AVAudioPlayer!
-
-//        let soundFilePath = Bundle.main.path(forResource: "BGM_battle001", ofType: "mp3")
-//        let sound = URL(fileURLWithPath: soundFilePath!)
-//        do {
-//            audioPlayer = try AVAudioPlayer(contentsOf: sound)
-//            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [])
-//            try AVAudioSession.sharedInstance().setActive(true, options: [])
-//        } catch {
-//            getLabel.text = "error"
-//            print("error")
-//        }
-//        audioPlayer.play()
 
         getLabel.text = "hello"
         
