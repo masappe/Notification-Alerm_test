@@ -22,8 +22,6 @@ class ViewController: UIViewController,UNUserNotificationCenterDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        
-        
         //時刻の更新
         let timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (time) in
             let date = Date()
@@ -31,16 +29,16 @@ class ViewController: UIViewController,UNUserNotificationCenterDelegate {
             formmater.dateFormat = "yyyy/MM/dd hh:mm:ss"
             self.timeLabel.text = formmater.string(from: date)
             })
+        //イベントの発火
         timer.fire()
-        
     }
-    
+    //Timer機能と配列を用いた現在の時刻と設定した時刻が一致しているかの確認
+    //時間の設定
     @IBAction func nextButton(_ sender: Any) {
         testDate = getDateInformation()
         testDate[5] = testDate[5] + 10
         let chooseTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(checkDate), userInfo: nil, repeats: true)
     }
-    
     //現在の日付と設定した日付が一致しているかどうか
     @objc func checkDate() {
         let currentDate = getDateInformation()
@@ -61,8 +59,10 @@ class ViewController: UIViewController,UNUserNotificationCenterDelegate {
         }
     }
 
+    //notificationを用い現在時刻に対して10秒後に通知が来るようにする
     @IBAction func pressButton(_ sender: Any) {
         getLabel.text = "Label"
+        //delegateの設定
         let center = UNUserNotificationCenter.current()
         center.delegate = self
         
@@ -86,11 +86,14 @@ class ViewController: UIViewController,UNUserNotificationCenterDelegate {
         content.title = "通知が来ました"
         content.body = "音が出るのかの確認"
         //音の設定
+        //カスタムサウンドの設定
+        //29秒までの音楽は流せるがそれ以上はデフォルトになる
         let sound = UNNotificationSound(named: UNNotificationSoundName("test.wav"))
         content.sound = sound
 //        content.sound = .default
         //通知の設定
-        let request = UNNotificationRequest(identifier: "hello", content: content, trigger: trigger)
+        //identifierは通知のキャンセルなどで使用する
+        let request = UNNotificationRequest(identifier: "time", content: content, trigger: trigger)
         //通知のセット
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         

@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         if #available(iOS 10.0, *) {
             // iOS 10
             let center = UNUserNotificationCenter.current()
+            //使う機能をoptionsで設定
             center.requestAuthorization(options: [.badge , .alert, .sound], completionHandler: { (granted, error) in
                 if error != nil {
                     return
