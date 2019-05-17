@@ -32,6 +32,7 @@ class ViewController: UIViewController,UNUserNotificationCenterDelegate {
         //イベントの発火
         timer.fire()
     }
+    
     //Timer機能と配列を用いた現在の時刻と設定した時刻が一致しているかの確認
     //時間の設定
     @IBAction func nextButton(_ sender: Any) {
