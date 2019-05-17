@@ -62,43 +62,49 @@ class ViewController: UIViewController,UNUserNotificationCenterDelegate {
     //notificationを用い現在時刻に対して10秒後に通知が来るようにする
     @IBAction func pressButton(_ sender: Any) {
         getLabel.text = "Label"
-        //delegateの設定
-        let center = UNUserNotificationCenter.current()
-        center.delegate = self
-        
-        var trigger: UNNotificationTrigger
-        let content = UNMutableNotificationContent()
-        //dateを入れる配列のようなもの
-        var notificationTime = DateComponents()
-        //現在の日付の取得
-        let date = getDateInformation()
-        //トリガーの設定
-        //10秒後に発火するようにする
-        notificationTime.year = date[0]
-        notificationTime.month = date[1]
-        notificationTime.day = date[2]
-        notificationTime.hour = date[3]
-        notificationTime.minute = date[4]
-        notificationTime.second = date[5] + 10
-        print(notificationTime)
-        trigger = UNCalendarNotificationTrigger(dateMatching: notificationTime, repeats: false)
-        //通知内容の設定
-        content.title = "通知が来ました"
-        content.body = "音が出るのかの確認"
-        //音の設定
-        //カスタムサウンドの設定
-        //29秒までの音楽は流せるがそれ以上はデフォルトになる
-        let sound = UNNotificationSound(named: UNNotificationSoundName("test.wav"))
-        content.sound = sound
-//        content.sound = .default
-        //通知の設定
-        //identifierは通知のキャンセルなどで使用する
-        let request = UNNotificationRequest(identifier: "time", content: content, trigger: trigger)
-        //通知のセット
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-        
+        let afterTenSecond = Notification()
+        afterTenSecond.setNotification(minute: 0, second: 10, identifier: "tenSecond")
+        let afterFiveMinute = Notification()
+        afterFiveMinute.setNotification(minute: 5, second: 0, identifier: "fiveMinute")
+        let afterTenMinute = Notification()
+        afterTenMinute.setNotification(minute: 10, second: 0, identifier: "tenMinute")
+//        //delegateの設定
+//        let center = UNUserNotificationCenter.current()
+//        center.delegate = self
+//
+//        var trigger: UNNotificationTrigger
+//        let content = UNMutableNotificationContent()
+//        //dateを入れる配列のようなもの
+//        var notificationTime = DateComponents()
+//        //現在の日付の取得
+//        let date = getDateInformation()
+//        //トリガーの設定
+//        //10秒後に発火するようにする
+//        notificationTime.year = date[0]
+//        notificationTime.month = date[1]
+//        notificationTime.day = date[2]
+//        notificationTime.hour = date[3]
+//        notificationTime.minute = date[4]
+//        notificationTime.second = date[5] + 10
+//        print(notificationTime)
+//        trigger = UNCalendarNotificationTrigger(dateMatching: notificationTime, repeats: false)
+//        //通知内容の設定
+//        content.title = "通知が来ました"
+//        content.body = "音が出るのかの確認"
+//        //音の設定
+//        //カスタムサウンドの設定
+//        //29秒までの音楽は流せるがそれ以上はデフォルトになる
+//        let sound = UNNotificationSound(named: UNNotificationSoundName("test.wav"))
+//        content.sound = sound
+////        content.sound = .default
+//        //通知の設定
+//        //identifierは通知のキャンセルなどで使用する
+//        let request = UNNotificationRequest(identifier: "time", content: content, trigger: trigger)
+//        //通知のセット
+//        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+//
         //labelに設定
-        triggerLabel.text = "\(date[0])年\(date[1])月\(date[2])日\(date[3])時\(date[4])分\(date[5]+10)秒"
+//        triggerLabel.text = "\(date[0])年\(date[1])月\(date[2])日\(date[3])時\(date[4])分\(date[5]+10)秒"
         
     }
     
@@ -114,6 +120,7 @@ class ViewController: UIViewController,UNUserNotificationCenterDelegate {
     //通知後に呼ばれる
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
 //        getLabel.text = "now got"
+        center.removePendingNotificationRequests(withIdentifiers: ["fiveMinute","tenMinute"])
     }
     
     //現在の日付の取得
@@ -133,10 +140,10 @@ class ViewController: UIViewController,UNUserNotificationCenterDelegate {
         nowDate.append(Int(formatter.string(from: date))!)
         formatter.dateFormat = "ss"
         nowDate.append(Int(formatter.string(from: date))!)
-//        print(nowDate)
+        //        print(nowDate)
         return nowDate
 
     }
-    
+
 }
 
