@@ -12,7 +12,7 @@ import UserNotifications
 class Notification {
     
     //現在の時間からminute,second後の時間を引数にする
-    func setNotification(minute: Int,second: Int,identifier: String) {
+    func setNotification(minute: Int,second: Int) {
         var trigger: UNNotificationTrigger
         let content = UNMutableNotificationContent()
         //dateを入れる配列のようなもの
@@ -37,6 +37,8 @@ class Notification {
         let sound = UNNotificationSound(named: UNNotificationSoundName("test.wav"))
         content.sound = sound
         //        content.sound = .default
+        //identifierの設定
+        let identifier = "\(date[0])年\(date[1])月\(date[2])日\(date[3])時\(date[4])分\(date[5])秒"
         //通知の設定
         //identifierは通知のキャンセルなどで使用する
         let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)

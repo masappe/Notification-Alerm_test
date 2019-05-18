@@ -21,7 +21,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qjP-Y7-J4U">
                                 <rect key="frame" x="136" y="342" width="103" height="91"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="First"/>
+                                <state key="normal" title="Timer set"/>
                                 <connections>
                                     <action selector="pressButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="x2u-h5-L0H"/>
                                 </connections>
@@ -48,11 +48,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wdf-Ph-a6D">
-                                <rect key="frame" x="161" y="463" width="52" height="30"/>
+                                <rect key="frame" x="95" y="441" width="184" height="69"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Second"/>
+                                <state key="normal" title="notification information"/>
                                 <connections>
-                                    <action selector="nextButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2SE-R3-JbW"/>
+                                    <action selector="notificationInformationButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wa0-TW-m8x"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Xe-zX-bn8">
+                                <rect key="frame" x="90" y="518" width="203" height="84"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="delete all notification"/>
+                                <connections>
+                                    <action selector="deleteNotification:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ge3-hf-b6N"/>
                                 </connections>
                             </button>
                         </subviews>
